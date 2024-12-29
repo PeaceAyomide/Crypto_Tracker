@@ -76,7 +76,7 @@ function App() {
   }, []);
   
   return (
-    <div className="min-h-screen  flex items-center justify-center p-4 pb-5">
+    <div className="h-[100vh]  flex items-center justify-center p-4 ">
       <div className="background-animation"></div>
       <div className="bg-gray-800 p-6 rounded-xl shadow-lg w-full max-w-md border border-gray-700 hover:border-green-500/50 transition-all duration-300">
         <h1 className="text-2xl font-bold text-gray-100 mb-6 font-Orbitron text-center">
