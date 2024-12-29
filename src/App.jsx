@@ -7,6 +7,12 @@ function App() {
   const [convertedAmount, setConvertedAmount] = useState('0.00'); // Conversion result
   const [isUsdToCrypto, setIsUsdToCrypto] = useState(false); // Default to Crypto to USD
 
+  const cryptoMap = {
+    bitcoin: 'BTC',
+    ethereum: 'ETH',
+    tether: 'USDT',
+  };
+
   // Fetch price whenever crypto changes
   useEffect(() => {
     const fetchPrice = async () => {
@@ -57,23 +63,21 @@ function App() {
     }
   };
 
-/* filepath: /c:/Users/Zeus/crypto-tracker/src/App.jsx */
-useEffect(() => {
-  const container = document.querySelector('.background-animation');
-  for (let i = 0; i < 20; i++) {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    particle.style.left = `${Math.random() * 100}%`;
-    particle.style.top = `${Math.random() * 100}%`;
-    particle.style.animationDelay = `${Math.random() * 5}s`;
-    container.appendChild(particle);
-  }
-}, []);
+  useEffect(() => {
+    const container = document.querySelector('.background-animation');
+    for (let i = 0; i < 20; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.top = `${Math.random() * 100}%`;
+      particle.style.animationDelay = `${Math.random() * 5}s`;
+      container.appendChild(particle);
+    }
+  }, []);
   
   return (
     <div className="min-h-screen  flex items-center justify-center p-4">
-          <div className="background-animation"></div>
-     
+      <div className="background-animation"></div>
       <div className="bg-gray-800 p-6 rounded-xl shadow-lg w-full max-w-md border border-gray-700 hover:border-green-500/50 transition-all duration-300">
         <h1 className="text-2xl font-bold text-gray-100 mb-6 font-Orbitron text-center">
           Crypto Converter
@@ -101,7 +105,7 @@ useEffect(() => {
               step="0.01"
             />
             <span className="absolute bg-gray-700 right-3 top-1/2 transform -translate-y-1/2 text-gray-400 font-Sora text-sm">
-              {isUsdToCrypto ? 'USD' : crypto.toUpperCase()}
+              {isUsdToCrypto ? 'USD' : cryptoMap[crypto]}
             </span>
           </div>
 
@@ -118,7 +122,7 @@ useEffect(() => {
           <div className="bg-gray-700 rounded-lg p-4 border border-gray-600">
             <div className="text-sm text-gray-400 font-Sora">Converted Amount</div>
             <div className="text-xl font-bold text-green-500 overflow-hidden text-ellipsis font-Sora">
-              {convertedAmount} {isUsdToCrypto ? crypto.toUpperCase() : 'USD'}
+              {convertedAmount} {isUsdToCrypto ? cryptoMap[crypto] : 'USD'}
             </div>
           </div>
 
